@@ -1,1 +1,21 @@
-DOCKER
+FROM Ubuntu:12.04
+RUN apt-get update
+RUN apt-get install -y tightvncserver
+RUN export USER=root
+RUN vncserver
+RUN apt-get install -y xfce4 xfce4-goodies 
+
+EXPOSE 5901
+
+RUN apt-get install -y python-software-properties
+RUN apt-get update
+RUN add-apt-repository ppa:deluge-team/ppa
+RUN apt-get install -y deluge
+
+password is n3bn3rg0
+
+
+docker commit <container_id> sburgoon/torrentz
+
+
+docker run -idt -p 5901:5901 sburgoon/torrentz
